@@ -42,7 +42,7 @@ Configuration& getConfig() {
 MAKE_HOOK_MATCH(OVRCameraRig_Awake, &GlobalNamespace::OVRCameraRig::Awake, void, GlobalNamespace::OVRCameraRig* instance)
 {
     OVRCameraRig_Awake(instance);
-    auto& modcfg = getConfig().config;;
+    auto& modcfg = getConfig().config;
 
     UnityEngine::GameObject* camobj = instance->get_gameObject();
     GlobalNamespace::OVROverlay* syslayer = camobj->AddComponent<GlobalNamespace::OVROverlay*>();
@@ -59,8 +59,8 @@ MAKE_HOOK_MATCH(OVRCameraRig_Awake, &GlobalNamespace::OVRCameraRig::Awake, void,
 
 extern "C" void setup(ModInfo& info) {
 
-    info.id = "OVRCameraCompanion";
-    info.version = "0.1.0";
+    info.id = "OVRPassthrough";
+    info.version = "0.1.1";
     modInfo = info;
     getConfig().Load();
 }

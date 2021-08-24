@@ -10,6 +10,6 @@ if (-not ($PSVersionTable.PSEdition -eq "Core")) {
 Compress-Archive -Path  "./libs/arm64-v8a/libbeatsaber-hook_2_2_5.so",`
                         "./libs/arm64-v8a/libovrpassthrough.so",`
                         "./cover.png",`
-                        "./mod.json" -DestinationPath "./OVRCameraCompanion.zip" -Update
+                        "./mod.json" -DestinationPath "./OVRPassthrough.zip" -Update
 
-& copy-item -Force "./OVRCameraCompanion.zip" "./OVRCameraCompanion.qmod"
+& copy-item -Force "./OVRPassthrough.zip" "./OVRPassthrough.qmod"
