@@ -21,14 +21,11 @@
 #include "UnityEngine/Quaternion.hpp"
 #include "UnityEngine/GameObject.hpp"
 #include "UnityEngine/Transform.hpp"
-#include "UnityEngine/XR/XRNode.hpp"
 #include "UnityEngine/Camera.hpp"
 #include "UnityEngine/Object.hpp"
 #include "UnityEngine/Color.hpp"
 
-
 static ModInfo modInfo;
-
 
 Logger& getLogger() {
     static Logger* logger = new Logger(modInfo, LoggerOptions(false, true));
@@ -47,7 +44,7 @@ MAKE_HOOK_MATCH(OVRCameraRig_Awake, &GlobalNamespace::OVRCameraRig::Awake, void,
 
     UnityEngine::Camera* midEyeCam = instance->centerEyeCamera;
     midEyeCam->set_clearFlags(UnityEngine::CameraClearFlags::SolidColor);
-    midEyeCam->set_backgroundColor(UnityEngine::Color(UnityEngine::Color(0.0f, 0.0f, 0.0f, 0.0f)));
+    midEyeCam->set_backgroundColor(UnityEngine::Color(0.0f, 0.0f, 0.0f, 0.0f)));
 
     UnityEngine::GameObject* camobj = instance->get_gameObject();
     GlobalNamespace::OVROverlay* syslayer = camobj->AddComponent<GlobalNamespace::OVROverlay*>();
