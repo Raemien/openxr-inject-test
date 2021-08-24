@@ -16,6 +16,7 @@
 #include "GlobalNamespace/OVRDisplay.hpp"
 #include "GlobalNamespace/OVRPlugin.hpp"
 
+#include "UnityEngine/CameraClearFlags.hpp"
 #include "UnityEngine/Vector3.hpp"
 #include "UnityEngine/Quaternion.hpp"
 #include "UnityEngine/GameObject.hpp"
@@ -43,6 +44,10 @@ MAKE_HOOK_MATCH(OVRCameraRig_Awake, &GlobalNamespace::OVRCameraRig::Awake, void,
 {
     OVRCameraRig_Awake(instance);
     auto& modcfg = getConfig().config;
+
+    UnityEngine::Camera* midEyeCam = instance->centerEyeCamera;
+    midEyeCam->set_clearFlags(UnityEngine::CameraClearFlags::SolidColor);
+    midEyeCam->set_backgroundColor(UnityEngine::Color(UnityEngine::Color(0.0f, 0.0f, 0.0f, 0.0f)));
 
     UnityEngine::GameObject* camobj = instance->get_gameObject();
     GlobalNamespace::OVROverlay* syslayer = camobj->AddComponent<GlobalNamespace::OVROverlay*>();
